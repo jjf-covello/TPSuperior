@@ -136,23 +136,47 @@ public class Tests {
 		SumaDeFasores sumadorFasores= new SumaDeFasores();
 		
 		fasor1.setEsCoseno(true);
-		fasor1.setAmplitud(8);
-		fasor1.setFrecuencia(2);
-		fasor1.setFase(((Math.PI)/3));
+		fasor1.setAmplitud(4);
+		fasor1.setFrecuencia(3);
+		fasor1.setFase(((Math.PI)/4));
 		
 
 		fasor2.setEsCoseno(true);
-		fasor2.setAmplitud(5);
-		fasor2.setFrecuencia(2);
-		fasor2.setFase(((Math.PI)/6));
+		fasor2.setAmplitud(6);
+		fasor2.setFrecuencia(3);
+		fasor2.setFase((-(Math.PI)/3));
 		
 		Fasores fasorResultado= sumadorFasores.realizarOperacion(fasor1, fasor2);
+		double resultado= (( fasorResultado.getAmplitud()));
 		
-		
-		Assert.assertEquals(6.248 , fasorResultado.getFase() ,0.001);
+		Assert.assertEquals(6.29 ,resultado ,0.01);
 		
 		
 	}
+	
+	
+	@Test
+	public void testPasarPolarABinomica() {
+		
+		NumeroComplejo numero= new NumeroComplejo();
+		
+		numero.setFase((Math.PI)/4);
+		numero.setModulo((float) (Math.sqrt(2.0)));
+		numero.ObtenerParteImaginariayReal();
+		
+		
+		Assert.assertEquals(1, numero.getParteReal(), 0.000001);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
 
 	@Test
 	public void testPotenciacion() {
@@ -190,20 +214,17 @@ public class Tests {
 		OperacionesAvanzadas operacionAvanzada= new OperacionesAvanzadas();
 		
 		
-		numero1.setParteImaginaria(8);
-		numero1.setParteReal(3);
+		numero1.setParteImaginaria(1);
+		numero1.setParteReal(1);
 		numero1.setFase(numero1.obtenerFase());
 		numero1.setModulo(numero1.obtenerModulo());
 
 		
-		float resultadoEsperado= (float) Math.sqrt(2.0);
-		resultadoEsperado= (float) Math.sqrt(resultadoEsperado);
-		resultadoEsperado= (float) Math.sqrt(resultadoEsperado);
 		
 		
 		NumeroComplejo numeroResultado= operacionAvanzada.radicacion(numero1, 3);
 
-		Assert.assertEquals(resultadoEsperado, numeroResultado.getModulo(),0.00001);	
+		Assert.assertEquals(1.12246, numeroResultado.getModulo(),0.00001);	
 		
 		
 		

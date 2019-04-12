@@ -46,52 +46,48 @@ public class SumaDeFasores {
 			
 			if(!this.sonFuncionesIguales(fasor1, fasor2)) {
 				
+				if(fasor1.isEsCoseno()) {
+					
+					fasor2.convertirDeSenoACoseno();
+					
+					
+				}else {
+					
+					
+					fasor1.convertirDeCosenoASeno();
+					
+					
+				}
 				
-				fasor1.covertirFuncion();
 		
 				
 			}else {}
 			
-			NumeroComplejo complejo1= new NumeroComplejo();
-			NumeroComplejo complejo2=new NumeroComplejo();
 			NumeroComplejo resultado=new NumeroComplejo();
 			
-			complejo1.setModulo((fasor1.getAmplitud()));
-			complejo1.setFase(fasor1.getFase());
-			complejo1.ObtenerParteImaginariayReal();
+			float modulo1=fasor1.getAmplitud();
+			float modulo2=fasor2.getAmplitud();
+			double fase1= fasor1.getFase();
+			double fase2= fasor2.getFase();
 			
-			complejo2.setModulo((fasor2.getAmplitud()));
-			complejo2.setFase(fasor2.getFase());
-			complejo2.ObtenerParteImaginariayReal();
-			
-			float parteRealResultado= complejo2.getParteReal() + complejo1.getParteReal();
-			float parteImaginariaResultado=complejo2.getParteImaginaria() + complejo1.getParteImaginaria();
+			float parteRealResultado= modulo1 * (float)Math.cos(fase1) + modulo2 * (float) Math.cos(fase2);
+			float parteImaginariaResultado=modulo1 * (float)Math.sin(fase1) + modulo2 * (float) Math.sin(fase2);
 			
 			resultado.setParteReal(parteRealResultado);
 			resultado.setParteImaginaria(parteImaginariaResultado);
 			resultado.setFase(resultado.obtenerFase());
 			resultado.setModulo(resultado.obtenerModulo());
 			
+	
+			
 			Fasores fasorResultado= new Fasores();
 			
-			if(fasor1.isEsCoseno()) {
 				
 				fasorResultado.setEsCoseno(true);
 				fasorResultado.setFase(resultado.getFase());
 				fasorResultado.setFrecuencia(fasor1.getFrecuencia());
 				fasorResultado.setAmplitud(resultado.getModulo());
 				
-				
-			}else {
-				
-				
-				fasorResultado.setEsCoseno(false);
-				fasorResultado.setFase(resultado.getFase());
-				fasorResultado.setFrecuencia(fasor1.getFrecuencia());
-				fasorResultado.setAmplitud(resultado.getModulo());
-				
-				
-			}
 			
 			return fasorResultado;
 			

@@ -24,7 +24,7 @@ public class OperacionesAvanzadas {
 	public NumeroComplejo radicacion(NumeroComplejo complejo, int raiz) {
 		
 		NumeroComplejo resultado= new NumeroComplejo();
-		float potencia= (1/raiz);
+		float potencia= (float) Math.pow(raiz, (-1));
 		 float nuevoModulo= (float) Math.pow( complejo.getModulo() , potencia);
 		 resultado.setModulo(nuevoModulo);
 		 resultado.setFase( complejo.getFase()/raiz);
