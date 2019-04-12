@@ -9,8 +9,8 @@ public class NumeroComplejo {
 	public float parteReal;
 	public float parteImaginaria;
 
-	public float modulo= this.obtenerModulo();
-	public double fase= this.obtenerFase();
+	public float modulo;
+	public double fase;
 	
 	
 	

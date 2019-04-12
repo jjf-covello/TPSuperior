@@ -40,7 +40,7 @@ public class SumaDeFasores {
 	
 	
 	
-	public void realizarOperacion(Fasores fasor1 , Fasores fasor2) throws TienenDistintoFrecuenciaException {
+	public Fasores realizarOperacion(Fasores fasor1 , Fasores fasor2) throws TienenDistintoFrecuenciaException {
 		
 		if(this.frecuenciasIguales(fasor1, fasor2)) {
 			
@@ -92,6 +92,8 @@ public class SumaDeFasores {
 				
 				
 			}
+			
+			return fasorResultado;
 			
 			
 			

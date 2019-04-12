@@ -1,5 +1,7 @@
 package OA;
 import EDT.NumeroComplejo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OperacionesAvanzadas {
 	
@@ -14,7 +16,7 @@ public class OperacionesAvanzadas {
 		 resultado.setFase( (complejo1.getFase())*exponente);
 		 resultado.ObtenerParteImaginariayReal();
 		 
-		
+
 		
 		return resultado ;
 		}
@@ -22,10 +24,17 @@ public class OperacionesAvanzadas {
 	public NumeroComplejo radicacion(NumeroComplejo complejo, int raiz) {
 		
 		NumeroComplejo resultado= new NumeroComplejo();
-		 float nuevoModulo= (float) Math.pow( complejo.getModulo() , (1/raiz));
+		float potencia= (1/raiz);
+		 float nuevoModulo= (float) Math.pow( complejo.getModulo() , potencia);
 		 resultado.setModulo(nuevoModulo);
 		 resultado.setFase( complejo.getFase()/raiz);
 		 resultado.ObtenerParteImaginariayReal();
+		 
+		 List<NumeroComplejo> nSoluciones= new ArrayList();
+		 
+		 resultado.setnSolucines(nSoluciones);
+		 
+		 
 		 
 		 
 		 for(int i=1; i < raiz;i++) {

@@ -53,26 +53,26 @@ public class Operacion {
 		
 	}
 	
-	public NumeroComplejo cociente(NumeroComplejo complejo1, NumeroComplejo  complejo2)
+	public NumeroComplejo cociente(NumeroComplejo dividendo, NumeroComplejo  divisor)
 	{
 		
 
-	       NumeroComplejo complejo3=new NumeroComplejo();
+	       NumeroComplejo resultado=new NumeroComplejo();
 		
-		   float a= complejo1.getParteReal();
-	       float b=complejo1.getParteImaginaria();
-	       float c=complejo2.getParteReal();
-	       float d=complejo2.getParteImaginaria();
+		   float a= dividendo.getParteReal();
+	       float b=dividendo.getParteImaginaria();
+	       float c=divisor.getParteReal();
+	       float d=divisor.getParteImaginaria();
 	       
 	       
-	       float parteRealResultado= (a*c-b*d)/(c*c+d*d);
-	       float parteImaginariaResultado= (a*d +b*c)/(c*c+d*d);
+	       float parteRealResultado=(a*d +b*c)/(c*c+d*d);
+	       float parteImaginariaResultado=  (a*c-b*d)/(c*c+d*d);
 	       
-	       complejo3.setParteReal(parteRealResultado);
-	       complejo3.setParteImaginaria(parteImaginariaResultado);
+	       resultado.setParteReal(parteRealResultado);
+	       resultado.setParteImaginaria(parteImaginariaResultado);
 	       
 	       
-			return complejo3;
+			return resultado;
 				
 	
 		
