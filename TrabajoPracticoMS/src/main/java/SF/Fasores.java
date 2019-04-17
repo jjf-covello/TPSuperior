@@ -73,4 +73,18 @@ public class Fasores {
 	}
 	
 
+    public void mostrar() {
+    	
+    	System.out.println("el fasor es... "+ amplitud+" .coseno("+ frecuencia+"t"+"+"+ fase +")" );
+    	
+    	
+    	
+    	
+    }
+    
+    
+    
 }
+
+
+

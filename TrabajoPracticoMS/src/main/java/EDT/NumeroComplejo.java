@@ -178,6 +178,31 @@ public class NumeroComplejo {
 		
 	}
 
+	public void mostrar() {
+		
+		
+		System.out.println("El modulo es "+ modulo +"la fase es "+ fase + "su parte imaginaria es "+ parteImaginaria +"su parte real es "+ parteReal);
+		
+		
+		
+		
+		
+	}
+	
+	public void mostrarSoluciones() {
+		
+		
+		 long contador= this.getnSolucines().stream().count();
+		 
+		 for(int i=0;i<contador;i++) {
+			 
+			 
+			 
+			 this.getnSolucines().get(i).mostrar();
+		 }
+		 
+		
+	}
 
 
 

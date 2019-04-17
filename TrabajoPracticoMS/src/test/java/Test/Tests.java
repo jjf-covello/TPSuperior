@@ -136,20 +136,20 @@ public class Tests {
 		SumaDeFasores sumadorFasores= new SumaDeFasores();
 		
 		fasor1.setEsCoseno(true);
-		fasor1.setAmplitud(4);
-		fasor1.setFrecuencia(3);
-		fasor1.setFase(((Math.PI)/4));
+		fasor1.setAmplitud(5);
+		fasor1.setFrecuencia(2);
+		fasor1.setFase((-(3.1415926536)/3));
 		
 
 		fasor2.setEsCoseno(true);
-		fasor2.setAmplitud(6);
-		fasor2.setFrecuencia(3);
-		fasor2.setFase((-(Math.PI)/3));
+		fasor2.setAmplitud(8);
+		fasor2.setFrecuencia(2);
+		fasor2.setFase(((3.1415926536)/6));
 		
 		Fasores fasorResultado= sumadorFasores.realizarOperacion(fasor1, fasor2);
 		double resultado= (( fasorResultado.getAmplitud()));
 		
-		Assert.assertEquals(6.29 ,resultado ,0.01);
+		Assert.assertEquals(9.434 ,resultado ,0.001);
 		
 		
 	}

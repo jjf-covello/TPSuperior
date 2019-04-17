@@ -9,6 +9,8 @@ public class Operacion {
 		
 		complejo3.setParteImaginaria((complejo1.getParteImaginaria()+complejo2.getParteImaginaria()));
 		complejo3.setParteReal((complejo1.getParteReal()+complejo2.getParteReal()));
+		complejo3.setFase(complejo3.obtenerFase());
+		complejo3.setModulo(complejo3.obtenerModulo());
 		
 		return complejo3;
 		
@@ -20,6 +22,8 @@ public class Operacion {
 		
 		complejo3.setParteImaginaria((complejo1.getParteImaginaria()-complejo2.getParteImaginaria()));
 		complejo3.setParteReal((complejo1.getParteReal()-complejo2.getParteReal()));
+		complejo3.setFase(complejo3.obtenerFase());
+		complejo3.setModulo(complejo3.obtenerModulo());
 		
 		return complejo3;
 		
@@ -41,7 +45,9 @@ public class Operacion {
        
        complejo3.setParteReal(parteRealResultado);
        complejo3.setParteImaginaria(parteImaginariaResultado);
-       
+       complejo3.setFase(complejo3.obtenerFase());
+		complejo3.setModulo(complejo3.obtenerModulo());
+		
        
 		return complejo3;
 		
@@ -70,7 +76,9 @@ public class Operacion {
 	       
 	       resultado.setParteReal(parteRealResultado);
 	       resultado.setParteImaginaria(parteImaginariaResultado);
-	       
+	       resultado.setFase(resultado.obtenerFase());
+		   resultado.setModulo(resultado.obtenerModulo());
+			
 	       
 			return resultado;
 				
