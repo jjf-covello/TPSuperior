@@ -5,6 +5,7 @@ import java.util.*;
 public class NumeroComplejo {
 	
 	public List<NumeroComplejo> nSolucines; 
+	public List<NumeroComplejo> raicesPrimarias;
 	
 	public float parteReal;
 	public float parteImaginaria;
@@ -15,6 +16,16 @@ public class NumeroComplejo {
 	
 	
 	
+
+	public List<NumeroComplejo> getRaicesPrimarias() {
+		return raicesPrimarias;
+	}
+
+
+	public void setRaicesPrimarias(List<NumeroComplejo> raicesPrimarias) {
+		this.raicesPrimarias = raicesPrimarias;
+	}
+
 
 	public List<NumeroComplejo> getnSolucines() {
 		return nSolucines;
@@ -193,12 +204,18 @@ public class NumeroComplejo {
 		
 		
 		 long contador= this.getnSolucines().stream().count();
-		 
+		 long contadorRaices= this.getRaicesPrimarias().stream().count();
+		 System.out.println("otras soluciones son...");
 		 for(int i=0;i<contador;i++) {
 			 
 			 
 			 
 			 this.getnSolucines().get(i).mostrar();
+		 }
+		 
+		 System.out.println("sus raices primitivas son...");
+		 for(int i=0;i<contadorRaices;i++) {
+			 	 this.getnSolucines().get(i).mostrar();
 		 }
 		 
 		

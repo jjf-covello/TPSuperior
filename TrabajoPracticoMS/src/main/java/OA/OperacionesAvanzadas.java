@@ -31,8 +31,9 @@ public class OperacionesAvanzadas {
 		 resultado.ObtenerParteImaginariayReal();
 		 
 		 List<NumeroComplejo> nSoluciones= new ArrayList();
-		 
+		 List<NumeroComplejo> raicesPrimarias= new ArrayList();
 		 resultado.setnSolucines(nSoluciones);
+		 resultado.setRaicesPrimarias(raicesPrimarias);
 		 
 		 
 		 
@@ -46,7 +47,13 @@ public class OperacionesAvanzadas {
 			 resultadoW.ObtenerParteImaginariayReal();
 			 
 			 resultado.getnSolucines().add(resultadoW);
+			 if(i%raiz != 0) {
+				 resultado.getRaicesPrimarias().add(resultadoW);
+				 
 			 }
+			 }
+		 
+		 
 		 
 		 
 		 return resultado;
