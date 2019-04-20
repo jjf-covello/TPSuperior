@@ -47,7 +47,7 @@ public class OperacionesAvanzadas {
 			 resultadoW.ObtenerParteImaginariayReal();
 			 
 			 resultado.getnSolucines().add(resultadoW);
-			 if(i%raiz != 0) {
+			 if(raiz%i != 0) {
 				 resultado.getRaicesPrimarias().add(resultadoW);
 				 
 			 }
