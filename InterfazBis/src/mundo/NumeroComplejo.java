@@ -163,39 +163,72 @@ public class NumeroComplejo {
 		
 	}
 
-	public void mostrar() {
+	public String mostrar() {
 		
+		return " "+ parteReal +" + "+ parteImaginaria+" j";
+	
+	}
+	 
+	public String mostrarPolar() {
 		
-		System.out.println("El modulo es "+ modulo +"la fase es "+ fase + "su parte imaginaria es "+ parteImaginaria +"su parte real es "+ parteReal);
+		return "[ "+ modulo +" , " + fase + " ]"; 
+	
+	}
+	
+	public List<String> mostrarSolucionesPolar() {
+	
+	List<String> resultado=new ArrayList();
+	 long contador= this.getnSolucines().stream().count();
+	 //long contadorRaices= this.getRaicesPrimarias().stream().count();
+	 //System.out.println("otras soluciones son...");
+	 for(int i=0;i<contador;i++) {
+		 resultado.add(this.getnSolucines().get(i).mostrarPolar());
+	 }
+	 
+	  
+	return resultado;
+}	
+	
+	
+	public List<String> mostrarSoluciones() {
 		
+		List<String> resultado=new ArrayList();
+		 long contador= this.getnSolucines().stream().count();
+		 //long contadorRaices= this.getRaicesPrimarias().stream().count();
+		 //System.out.println("otras soluciones son...");
+		 for(int i=0;i<contador;i++) {
+			 resultado.add(this.getnSolucines().get(i).mostrar());
+		 }
+		 
+		  
+		return resultado;
+	}
+
+	public List<String> mostrarRaicesPrimitivas(){
 		
+		List<String> resultado=new ArrayList();
+		 long contadorRaices= this.getRaicesPrimarias().stream().count();
+		 //System.out.println("otras soluciones son...");
+		 for(int i=0;i<contadorRaices;i++) {
+			 resultado.add(this.getRaicesPrimarias().get(i).mostrar());
+		 }
 		
-		
+		return resultado;
 		
 	}
 	
-	public void mostrarSoluciones() {
+	public List<String> mostrarRaicesPrimitivasPolar(){
 		
-		
-		 long contador= this.getnSolucines().stream().count();
+		List<String> resultado=new ArrayList();
 		 long contadorRaices= this.getRaicesPrimarias().stream().count();
-		 System.out.println("otras soluciones son...");
-		 for(int i=0;i<contador;i++) {
-			 
-			 
-			 
-			 this.getnSolucines().get(i).mostrar();
-		 }
-		 
-		 System.out.println("sus raices primitivas son...");
+		 //System.out.println("otras soluciones son...");
 		 for(int i=0;i<contadorRaices;i++) {
-			 	 this.getnSolucines().get(i).mostrar();
+			 resultado.add(this.getRaicesPrimarias().get(i).mostrarPolar());
 		 }
-		 
+		
+		return resultado;
 		
 	}
-
-
 
 
 }

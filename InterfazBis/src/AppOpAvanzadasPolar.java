@@ -10,8 +10,10 @@ import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
@@ -19,15 +21,15 @@ import mundo.NumeroComplejo;
 import mundo.OperacionesAvanzadas;
 
 import java.awt.SystemColor;
+import javax.swing.JScrollPane;
+import javax.swing.JList;
 
 public class AppOpAvanzadasPolar {
 
 	private JFrame frame;
-	private JTextField resultadoModulo;
 	private JTextField modulo_1;
 	private JTextField grado;
 	private JTextField fase_1;
-	private JTextField resultadoFase;
 
 	/**
 	 * Launch the application.
@@ -57,10 +59,11 @@ public class AppOpAvanzadasPolar {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		JList list = new JList();
+		list.setFont(new Font("Arial", Font.PLAIN, 11));
 		frame.setBounds(100, 100, 800, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.DARK_GRAY);
 		panel.setBounds(0, 0, 784, 461);
@@ -70,11 +73,13 @@ public class AppOpAvanzadasPolar {
 		JButton btnRadicacin = new JButton("Radicaci\u00F3n");
 		btnRadicacin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				NumeroComplejo numero1= new NumeroComplejo();
 				OperacionesAvanzadas operacionAvanzada= new OperacionesAvanzadas();
 				
 				float numMod,numFase,ansMod,ansFase;
 				int numGrado;
+
 				
 				try {
 					numMod=Float.parseFloat(modulo_1.getText());
@@ -83,31 +88,61 @@ public class AppOpAvanzadasPolar {
 					
 					//numero1.setParteReal(numReal_1);
 					//numero1.setParteImaginaria(numIm_1);
-					numero1.setFase(numMod);
-					numero1.setModulo(numFase);
+					numero1.setFase(numFase);
+					numero1.setModulo(numMod);
 					numero1.ObtenerParteImaginariayReal();
+				
 					
-					NumeroComplejo numeroResultado= operacionAvanzada.radicacion(numero1, numGrado);
+					NumeroComplejo numeroResultado = operacionAvanzada.radicacion(numero1, numGrado);
 					
-					ansMod = numeroResultado.getParteReal();
-					ansFase = numeroResultado.getParteImaginaria();
+					//ansMod = numeroResultado.obtenerModulo();
+					//ansFase = numeroResultado.obtenerFase();
 					
-					resultadoModulo.setText(Float.toString(ansMod));
-					resultadoFase.setText(Float.toString(ansFase));
+					DefaultListModel DLM = new DefaultListModel();
+					List<String> resultadoFinal = numeroResultado.mostrarSolucionesPolar();
+					
+					DLM.addElement("Los resultados son: ");
+					list.setModel(DLM);
+					
+					
+					for(int i=0;i<resultadoFinal.size();i++) {
+						DLM.addElement(resultadoFinal.get(i));
+						list.setModel(DLM);
+					}
+					
+					List<String> resultadoPrimitivas = numeroResultado.mostrarRaicesPrimitivasPolar();
+					
+					DLM.addElement("Las raices primitivas son: ");
+					list.setModel(DLM);
+					
+					
+					for(int i=0;i<resultadoPrimitivas.size();i++) {
+						DLM.addElement(resultadoPrimitivas.get(i));
+						list.setModel(DLM);
+					}
+					
+					
 					
 				}catch(Exception e1) {
 					JOptionPane.showMessageDialog(null, "Por favor ingrese solo numeros validos");
 				}
 			}
 		});
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(203, 247, 355, 75);
+		panel.add(scrollPane);
+		
+		scrollPane.setViewportView(list);
 		btnRadicacin.setFont(new Font("Arial", Font.PLAIN, 11));
 		btnRadicacin.setBackground(SystemColor.menu);
-		btnRadicacin.setBounds(334, 250, 113, 23);
+		btnRadicacin.setBounds(445, 213, 113, 23);
 		panel.add(btnRadicacin);
 		
 		JButton btnNewButton = new JButton("Potenciaci\u00F3n");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				NumeroComplejo numero1= new NumeroComplejo();
 				OperacionesAvanzadas operacionAvanzada= new OperacionesAvanzadas();
 				
@@ -121,18 +156,29 @@ public class AppOpAvanzadasPolar {
 					
 					//numero1.setParteReal(numReal_1);
 					//numero1.setParteImaginaria(numIm_1);
-					numero1.setFase(numMod);
-					numero1.setModulo(numFase);
+					numero1.setFase(numFase);
+					numero1.setModulo(numMod);
 					numero1.ObtenerParteImaginariayReal();
 				
+					NumeroComplejo numeroResultado = new NumeroComplejo();
+					numeroResultado = operacionAvanzada.potenciacion(numero1, numGrado);
 					
-					NumeroComplejo numeroResultado= operacionAvanzada.radicacion(numero1, numGrado);
+					ansMod = numeroResultado.obtenerModulo();
+					ansFase = numeroResultado.obtenerFase();
 					
-					ansMod = numeroResultado.getParteReal();
-					ansFase = numeroResultado.getParteImaginaria();
+					//ansReal = numeroResultado.getParteReal();
+					//ansIm= numeroResultado.getParteImaginaria();
 					
-					resultadoModulo.setText(Float.toString(ansMod));
-					resultadoFase.setText(Float.toString(ansFase));
+					
+					//DecimalFormat df = new DecimalFormat("#.###");
+					//String x = df.format(ansFase);
+					//ansFase = Double.valueOf(x);
+					
+					
+					DefaultListModel DLM = new DefaultListModel();
+					DLM.addElement("Resultado: [ " + ansMod + " , " + ansFase + " ]");
+					//DLM.addElement("Forma Binomica: "+Math.round(ansReal)+" + "+ansIm+" j");
+					list.setModel(DLM);
 					
 				}catch(Exception e1) {
 					JOptionPane.showMessageDialog(null, "Por favor ingrese solo numeros validos");
@@ -141,39 +187,8 @@ public class AppOpAvanzadasPolar {
 		});
 		btnNewButton.setBackground(SystemColor.menu);
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		btnNewButton.setBounds(203, 250, 113, 23);
+		btnNewButton.setBounds(322, 213, 113, 23);
 		panel.add(btnNewButton);
-		
-		JLabel label_14 = new JLabel("]");
-		label_14.setFont(new Font("Arial", Font.PLAIN, 11));
-		label_14.setBounds(353, 284, 19, 32);
-		panel.add(label_14);
-		
-		resultadoFase = new JTextField();
-		resultadoFase.setHorizontalAlignment(SwingConstants.CENTER);
-		resultadoFase.setFont(new Font("Arial", Font.PLAIN, 11));
-		resultadoFase.setColumns(10);
-		resultadoFase.setBackground(SystemColor.menu);
-		resultadoFase.setBounds(317, 290, 32, 20);
-		panel.add(resultadoFase);
-		
-		JLabel label_13 = new JLabel(";");
-		label_13.setFont(new Font("Arial", Font.PLAIN, 11));
-		label_13.setBounds(304, 284, 12, 32);
-		panel.add(label_13);
-		
-		JLabel label_12 = new JLabel("[");
-		label_12.setFont(new Font("Arial", Font.PLAIN, 11));
-		label_12.setBounds(257, 284, 19, 32);
-		panel.add(label_12);
-		
-		resultadoModulo = new JTextField();
-		resultadoModulo.setHorizontalAlignment(SwingConstants.CENTER);
-		resultadoModulo.setBackground(SystemColor.menu);
-		resultadoModulo.setFont(new Font("Arial", Font.PLAIN, 11));
-		resultadoModulo.setColumns(10);
-		resultadoModulo.setBounds(266, 290, 32, 20);
-		panel.add(resultadoModulo);
 		
 		JLabel label_11 = new JLabel("]");
 		label_11.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -192,11 +207,6 @@ public class AppOpAvanzadasPolar {
 		modulo_1.setColumns(10);
 		modulo_1.setBounds(361, 140, 32, 20);
 		panel.add(modulo_1);
-		
-		JLabel label_5 = new JLabel("Resultado:");
-		label_5.setFont(new Font("Arial", Font.PLAIN, 11));
-		label_5.setBounds(203, 284, 140, 32);
-		panel.add(label_5);
 		
 		fase_1 = new JTextField();
 		fase_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -260,5 +270,4 @@ public class AppOpAvanzadasPolar {
 	public void setVisible(boolean b) {
 		frame.setVisible(true);
 	}
-
 }

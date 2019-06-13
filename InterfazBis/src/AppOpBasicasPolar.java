@@ -94,7 +94,7 @@ public class AppOpBasicasPolar {
 					numero1.ObtenerParteImaginariayReal();
 					numero2.ObtenerParteImaginariayReal();
 					
-					NumeroComplejo numeroResultado= operacionBasica.cociente(numero1, numero2);
+					NumeroComplejo numeroResultado = operacionBasica.cociente(numero1, numero2);
 					
 					
 					ansMod = numeroResultado.obtenerModulo();

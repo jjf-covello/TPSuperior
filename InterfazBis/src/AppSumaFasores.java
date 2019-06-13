@@ -106,6 +106,8 @@ public class AppSumaFasores {
 					fasor1.setFrecuencia(numFrec_1);
 					fasor1.setFase(numFase_1);
 					
+					//fasor1.convertirEquivalenteEnCoseno();
+					
 					Object obj1 = comboBox_1.getSelectedItem();
 					if(obj1=="sen") {
 						fasor2.setEsCoseno(false);
@@ -117,6 +119,8 @@ public class AppSumaFasores {
 					fasor2.setAmplitud(numAmp_2);
 					fasor2.setFrecuencia(numFrec_2);
 					fasor2.setFase(numFase_2);
+					
+					//fasor2.convertirEquivalenteEnCoseno();
 					
 					
 					Fasores fasorResultado= sumadorFasores.realizarOperacion(fasor1, fasor2);

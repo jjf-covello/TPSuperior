@@ -49,8 +49,11 @@ public class SumaDeFasores {
 						
 			}
 		
-		fasor2.convertirDeSenoACoseno();
+		
+		
 		fasor1.convertirDeSenoACoseno();
+		fasor2.convertirDeSenoACoseno();
+		
 			
 		NumeroComplejo resultado=new NumeroComplejo();
 		NumeroComplejo complejo1 = new NumeroComplejo();
@@ -58,8 +61,10 @@ public class SumaDeFasores {
 		
 		complejo1.setModulo(fasor1.getAmplitud());
 		complejo2.setModulo(fasor2.getAmplitud());
+		
 		complejo1.setFase((float)fasor1.getFase());
 		complejo2.setFase((float)fasor2.getFase());
+		
 		complejo1.ObtenerParteImaginariayReal();
 		complejo2.ObtenerParteImaginariayReal();
 		

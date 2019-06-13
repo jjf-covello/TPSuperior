@@ -35,18 +35,35 @@ public class Fasores {
 		this.amplitud = amplitud;
 	}
 	
+	 /*
+	public Fasores convertirEquivalenteEnCoseno() {
+		
+		if(!esCoseno) {
+			
+			Fasores transformado  = new Fasores();
+			transformado.setAmplitud(amplitud);
+			transformado.setFase(fase-(Math.PI*(0.5)));
+			transformado.setEsCoseno(true);
+			transformado.setFrecuencia(frecuencia);
+			
+			return transformado;
+		}
+		return this;
+		
+	}
+	*/
 	
-	
-	
+	 
 	public void convertirDeSenoACoseno() {
 		if(!esCoseno) {
-		this.setFase((this.getFase()-((Math.PI)*(0.5))));
+		this.setFase((this.getFase())-((Math.PI)*(0.5)));
 		this.setEsCoseno(true);	
 		}
 		
 	}
 	
-    /*public void convertirDeCosenoASeno() {
+	/*
+   public void convertirDeCosenoASeno() {
 		
 		this.setFase((this.getFase()+((Math.PI)/2)));
 		
@@ -55,6 +72,8 @@ public class Fasores {
 		
 		
 	}*/
+	
+	
 	
 
         
