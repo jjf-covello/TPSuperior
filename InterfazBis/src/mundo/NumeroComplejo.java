@@ -1,6 +1,7 @@
 package mundo;
 
 import java.math.*;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class NumeroComplejo {
@@ -165,13 +166,18 @@ public class NumeroComplejo {
 
 	public String mostrar() {
 		
-		return " "+ parteReal +" + "+ parteImaginaria+" j";
+		DecimalFormat df = new DecimalFormat("#.###");
+		
+		return " "+ df.format(parteReal) +" + "+ df.format(parteImaginaria)+" j";
+		
 	
 	}
 	 
 	public String mostrarPolar() {
 		
-		return "[ "+ modulo +" , " + fase + " ]"; 
+		DecimalFormat df = new DecimalFormat("#.###");
+		
+		return "[ "+ df.format(modulo) +" , " + df.format(fase) + " ]"; 
 	
 	}
 	

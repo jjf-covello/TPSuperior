@@ -10,6 +10,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
@@ -78,7 +79,8 @@ public class AppOpBasicasPolar {
 				NumeroComplejo numero2= new NumeroComplejo();
 				Operacion operacionBasica= new Operacion();
 				
-				float numMod_1,numFase_1,numMod_2,numFase_2,ansMod,ansFase;
+				float numMod_1,numFase_1,numMod_2,numFase_2;
+				String ansMod,ansFase;
 				try {
 					numMod_1=Float.parseFloat(modulo_1.getText());
 					numFase_1=Float.parseFloat(fase_1.getText());
@@ -96,12 +98,13 @@ public class AppOpBasicasPolar {
 					
 					NumeroComplejo numeroResultado = operacionBasica.cociente(numero1, numero2);
 					
+					DecimalFormat df = new DecimalFormat("#.###");
 					
-					ansMod = numeroResultado.obtenerModulo();
-					ansFase = numeroResultado.obtenerFase();
+					ansMod = df.format(numeroResultado.obtenerModulo());
+					ansFase = df.format(numeroResultado.obtenerFase());
 					
-					resultadoModulo.setText(Float.toString(ansMod));
-					resultadoFase.setText(Double.toString(ansFase));
+					resultadoModulo.setText(ansMod);
+					resultadoFase.setText(ansFase);
 					
 				}catch(Exception e1) {
 					JOptionPane.showMessageDialog(null, "Por favor ingrese solo numeros validos");
@@ -116,6 +119,7 @@ public class AppOpBasicasPolar {
 		panel.add(label_14);
 		
 		resultadoFase = new JTextField();
+		resultadoFase.setEditable(false);
 		resultadoFase.setFont(new Font("Arial", Font.PLAIN, 11));
 		resultadoFase.setHorizontalAlignment(SwingConstants.CENTER);
 		resultadoFase.setColumns(10);
@@ -144,7 +148,8 @@ public class AppOpBasicasPolar {
 				NumeroComplejo numero2= new NumeroComplejo();
 				Operacion operacionBasica= new Operacion();
 				
-				float numMod_1,numFase_1,numMod_2,numFase_2,ansMod,ansFase;
+				float numMod_1,numFase_1,numMod_2,numFase_2;
+				String ansMod,ansFase;
 				try {
 					numMod_1=Float.parseFloat(modulo_1.getText());
 					numFase_1=Float.parseFloat(fase_1.getText());
@@ -162,12 +167,13 @@ public class AppOpBasicasPolar {
 					
 					NumeroComplejo numeroResultado= operacionBasica.multiplicacion(numero1, numero2);
 					
+					DecimalFormat df = new DecimalFormat("#.###");
 					
-					ansMod = numeroResultado.obtenerModulo();
-					ansFase = numeroResultado.obtenerFase();
+					ansMod = df.format(numeroResultado.obtenerModulo());
+					ansFase = df.format(numeroResultado.obtenerFase());
 					
-					resultadoModulo.setText(Float.toString(ansMod));
-					resultadoFase.setText(Double.toString(ansFase));
+					resultadoModulo.setText(ansMod);
+					resultadoFase.setText(ansFase);
 					
 				}catch(Exception e1) {
 					JOptionPane.showMessageDialog(null, "Por favor ingrese solo numeros validos");
@@ -187,7 +193,8 @@ public class AppOpBasicasPolar {
 				NumeroComplejo numero2= new NumeroComplejo();
 				Operacion operacionBasica= new Operacion();
 				
-				float numMod_1,numFase_1,numMod_2,numFase_2,ansMod,ansFase;
+				float numMod_1,numFase_1,numMod_2,numFase_2;
+				String ansMod,ansFase;
 				try {
 					numMod_1=Float.parseFloat(modulo_1.getText());
 					numFase_1=Float.parseFloat(fase_1.getText());
@@ -205,12 +212,13 @@ public class AppOpBasicasPolar {
 					
 					NumeroComplejo numeroResultado= operacionBasica.resta(numero1, numero2);
 					
+					DecimalFormat df = new DecimalFormat("#.###");
 					
-					ansMod = numeroResultado.obtenerModulo();
-					ansFase = numeroResultado.obtenerFase();
+					ansMod = df.format(numeroResultado.obtenerModulo());
+					ansFase = df.format(numeroResultado.obtenerFase());
 					
-					resultadoModulo.setText(Float.toString(ansMod));
-					resultadoFase.setText(Double.toString(ansFase));
+					resultadoModulo.setText(ansMod);
+					resultadoFase.setText(ansFase);
 					
 				}catch(Exception e1) {
 					JOptionPane.showMessageDialog(null, "Por favor ingrese solo numeros validos");
@@ -230,7 +238,8 @@ public class AppOpBasicasPolar {
 				NumeroComplejo numero2= new NumeroComplejo();
 				Operacion operacionBasica= new Operacion();
 				
-				float numMod_1,numFase_1,numMod_2,numFase_2,ansMod,ansFase;
+				float numMod_1,numFase_1,numMod_2,numFase_2;
+				String ansMod,ansFase;
 				try {
 					numMod_1=Float.parseFloat(modulo_1.getText());
 					numFase_1=Float.parseFloat(fase_1.getText());
@@ -252,11 +261,13 @@ public class AppOpBasicasPolar {
 					//ansMod= numeroResultado.parteReal;
 					//ansFase= numeroResultado.parteImaginaria;
 					
-					ansMod = numeroResultado.obtenerModulo();
-					ansFase = numeroResultado.obtenerFase();
+					DecimalFormat df = new DecimalFormat("#.###");
 					
-					resultadoModulo.setText(Float.toString(ansMod));
-					resultadoFase.setText(Double.toString(ansFase));
+					ansMod = df.format(numeroResultado.obtenerModulo());
+					ansFase = df.format(numeroResultado.obtenerFase());
+					
+					resultadoModulo.setText(ansMod);
+					resultadoFase.setText(ansFase);
 					
 				}catch(Exception e1) {
 					JOptionPane.showMessageDialog(null, "Por favor ingrese solo numeros validos");
@@ -321,6 +332,7 @@ public class AppOpBasicasPolar {
 		panel.add(label_7);
 		
 		resultadoModulo = new JTextField();
+		resultadoModulo.setEditable(false);
 		resultadoModulo.setFont(new Font("Arial", Font.PLAIN, 11));
 		resultadoModulo.setHorizontalAlignment(SwingConstants.CENTER);
 		resultadoModulo.setBackground(SystemColor.menu);

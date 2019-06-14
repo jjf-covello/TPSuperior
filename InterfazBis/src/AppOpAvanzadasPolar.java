@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
@@ -174,9 +175,9 @@ public class AppOpAvanzadasPolar {
 					//String x = df.format(ansFase);
 					//ansFase = Double.valueOf(x);
 					
-					
+					DecimalFormat df = new DecimalFormat("#.###");
 					DefaultListModel DLM = new DefaultListModel();
-					DLM.addElement("Resultado: [ " + ansMod + " , " + ansFase + " ]");
+					DLM.addElement("Resultado: [ " + df.format(ansMod) + " , " + df.format(ansFase) + " ]");
 					//DLM.addElement("Forma Binomica: "+Math.round(ansReal)+" + "+ansIm+" j");
 					list.setModel(DLM);
 					

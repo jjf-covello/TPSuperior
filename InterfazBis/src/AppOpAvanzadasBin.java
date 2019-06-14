@@ -170,10 +170,10 @@ public class AppOpAvanzadasBin {
 					//String x = df.format(ansFase);
 					//ansFase = Double.valueOf(x);
 					
-					
+					DecimalFormat df = new DecimalFormat("#.###");
 					DefaultListModel DLM = new DefaultListModel();
 					//DLM.addElement("Forma Polar : [ " + ansMod + " , " + ansFase + " ]");
-					DLM.addElement("Resultado: "+Math.round(ansReal)+" + "+ansIm+" j");
+					DLM.addElement("Resultado: "+df.format(ansReal)+" + "+df.format(ansIm)+" j");
 					list.setModel(DLM);
 					//List<String> resultadoFinal = numeroResultado.mostrarSoluciones();
 					

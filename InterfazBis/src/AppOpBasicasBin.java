@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
@@ -72,7 +73,8 @@ public class AppOpBasicasBin {
 				NumeroComplejo numero2= new NumeroComplejo();
 				Operacion operacionBasica= new Operacion();
 				
-				float numReal_1,numIm_1,numReal_2,numIm_2,ansReal,ansIm;
+				float numReal_1,numIm_1,numReal_2,numIm_2;
+				String ansReal,ansIm;
 				try {
 					numReal_1=Float.parseFloat(parteReal_1.getText());
 					numIm_1=Float.parseFloat(parteIm_1.getText());
@@ -88,11 +90,13 @@ public class AppOpBasicasBin {
 					
 					NumeroComplejo numeroResultado= operacionBasica.suma(numero1, numero2);
 					
-					ansReal = numeroResultado.getParteReal();
-					ansIm = numeroResultado.getParteImaginaria();
+					DecimalFormat df = new DecimalFormat("#.###");
 					
-					resultadoParteReal.setText(Float.toString(ansReal));
-					resultadoParteIm.setText(Float.toString(ansIm));
+					ansReal = df.format(numeroResultado.getParteReal());
+					ansIm = df.format(numeroResultado.getParteImaginaria());
+					
+					resultadoParteReal.setText(ansReal);
+					resultadoParteIm.setText(ansIm);
 					
 				}catch(Exception e) {
 					JOptionPane.showMessageDialog(null, "Por favor ingrese solo numeros validos");
@@ -107,7 +111,8 @@ public class AppOpBasicasBin {
 				NumeroComplejo numero2= new NumeroComplejo();
 				Operacion operacionBasica= new Operacion();
 				
-				float numReal_1,numIm_1,numReal_2,numIm_2,ansReal,ansIm;
+				float numReal_1,numIm_1,numReal_2,numIm_2;
+				String ansReal,ansIm;
 				try {
 					numReal_1=Float.parseFloat(parteReal_1.getText());
 					numIm_1=Float.parseFloat(parteIm_1.getText());
@@ -123,11 +128,13 @@ public class AppOpBasicasBin {
 					
 					NumeroComplejo numeroResultado= operacionBasica.cociente(numero1, numero2);
 					
-					ansReal = numeroResultado.getParteReal();
-					ansIm = numeroResultado.getParteImaginaria();
+					DecimalFormat df = new DecimalFormat("#.###");
 					
-					resultadoParteReal.setText(Float.toString(ansReal));
-					resultadoParteIm.setText(Float.toString(ansIm));
+					ansReal = df.format(numeroResultado.getParteReal());
+					ansIm = df.format(numeroResultado.getParteImaginaria());
+					
+					resultadoParteReal.setText(ansReal);
+					resultadoParteIm.setText(ansIm);
 					
 				}catch(Exception e1) {
 					JOptionPane.showMessageDialog(null, "Por favor ingrese solo numeros validos");
@@ -147,8 +154,8 @@ public class AppOpBasicasBin {
 		panel.add(label_3);
 		
 		resultadoParteIm = new JTextField();
-		resultadoParteIm.setHorizontalAlignment(SwingConstants.CENTER);
 		resultadoParteIm.setEditable(false);
+		resultadoParteIm.setHorizontalAlignment(SwingConstants.CENTER);
 		resultadoParteIm.setColumns(10);
 		resultadoParteIm.setBackground(SystemColor.menu);
 		resultadoParteIm.setBounds(381, 284, 89, 26);
@@ -165,7 +172,8 @@ public class AppOpBasicasBin {
 				NumeroComplejo numero2= new NumeroComplejo();
 				Operacion operacionBasica= new Operacion();
 				
-				float numReal_1,numIm_1,numReal_2,numIm_2,ansReal,ansIm;
+				float numReal_1,numIm_1,numReal_2,numIm_2;
+				String ansReal,ansIm;
 				try {
 					numReal_1=Float.parseFloat(parteReal_1.getText());
 					numIm_1=Float.parseFloat(parteIm_1.getText());
@@ -181,11 +189,13 @@ public class AppOpBasicasBin {
 					
 					NumeroComplejo numeroResultado= operacionBasica.multiplicacion(numero1, numero2);
 					
-					ansReal = numeroResultado.getParteReal();
-					ansIm = numeroResultado.getParteImaginaria();
+					DecimalFormat df = new DecimalFormat("#.###");
 					
-					resultadoParteReal.setText(Float.toString(ansReal));
-					resultadoParteIm.setText(Float.toString(ansIm));
+					ansReal = df.format(numeroResultado.getParteReal());
+					ansIm = df.format(numeroResultado.getParteImaginaria());
+					
+					resultadoParteReal.setText(ansReal);
+					resultadoParteIm.setText(ansIm);
 					
 				}catch(Exception e1) {
 					JOptionPane.showMessageDialog(null, "Por favor ingrese solo numeros validos");
@@ -204,7 +214,8 @@ public class AppOpBasicasBin {
 				NumeroComplejo numero2= new NumeroComplejo();
 				Operacion operacionBasica= new Operacion();
 				
-				float numReal_1,numIm_1,numReal_2,numIm_2,ansReal,ansIm;
+				float numReal_1,numIm_1,numReal_2,numIm_2;
+				String ansReal,ansIm;
 				try {
 					numReal_1=Float.parseFloat(parteReal_1.getText());
 					numIm_1=Float.parseFloat(parteIm_1.getText());
@@ -220,11 +231,13 @@ public class AppOpBasicasBin {
 					
 					NumeroComplejo numeroResultado= operacionBasica.resta(numero1, numero2);
 					
-					ansReal = numeroResultado.getParteReal();
-					ansIm = numeroResultado.getParteImaginaria();
+					DecimalFormat df = new DecimalFormat("#.###");
 					
-					resultadoParteReal.setText(Float.toString(ansReal));
-					resultadoParteIm.setText(Float.toString(ansIm));
+					ansReal = df.format(numeroResultado.getParteReal());
+					ansIm = df.format(numeroResultado.getParteImaginaria());
+					
+					resultadoParteReal.setText(ansReal);
+					resultadoParteIm.setText(ansIm);
 					
 				}catch(Exception e1) {
 					JOptionPane.showMessageDialog(null, "Por favor ingrese solo numeros validos");
@@ -251,9 +264,9 @@ public class AppOpBasicasBin {
 		panel.add(lblInserteOtroNmero);
 		
 		resultadoParteReal = new JTextField();
+		resultadoParteReal.setEditable(false);
 		resultadoParteReal.setHorizontalAlignment(SwingConstants.CENTER);
 		resultadoParteReal.setBackground(SystemColor.menu);
-		resultadoParteReal.setEditable(false);
 		resultadoParteReal.setColumns(10);
 		resultadoParteReal.setBounds(268, 284, 89, 26);
 		panel.add(resultadoParteReal);

@@ -56,7 +56,7 @@ public class Fasores {
 	 
 	public void convertirDeSenoACoseno() {
 		if(!esCoseno) {
-		this.setFase((this.getFase())-((Math.PI)*(0.5)));
+		fase=fase-(Math.PI*(0.5));
 		this.setEsCoseno(true);	
 		}
 		

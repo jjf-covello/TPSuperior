@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
@@ -61,6 +63,7 @@ public class AppSumaFasores {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,19 +75,115 @@ public class AppSumaFasores {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
+		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				AppSumaFasores appSF = new AppSumaFasores();
+				appSF.setVisible(true);
+			}
+		});
+		btnLimpiar.setFont(new Font("Arial", Font.PLAIN, 11));
+		btnLimpiar.setBackground(SystemColor.menu);
+		btnLimpiar.setBounds(306, 240, 84, 23);
+		panel.add(btnLimpiar);
+		
+		JButton buttonCos_1 = new JButton("cos");
+		buttonCos_1.setFont(new Font("Arial", Font.PLAIN, 11));
+		buttonCos_1.setBackground(SystemColor.menu);
+		buttonCos_1.setBounds(359, 217, 62, 14);
+		panel.add(buttonCos_1);
+		
+		JButton buttonSen_1 = new JButton("sen");
+		buttonSen_1.setFont(new Font("Arial", Font.PLAIN, 11));
+		buttonSen_1.setBackground(SystemColor.menu);
+		buttonSen_1.setBounds(359, 200, 62, 14);
+		panel.add(buttonSen_1);
+		
+		JButton btnCos = new JButton("cos");
+		btnCos.setFont(new Font("Arial", Font.PLAIN, 11));
+		btnCos.setBackground(SystemColor.menu);
+		btnCos.setBounds(349, 175, 62, 14);
+		panel.add(btnCos);
+		
+		JButton btnSen = new JButton("sen");
+		btnSen.setFont(new Font("Arial", Font.PLAIN, 11));
+		btnSen.setBackground(SystemColor.menu);
+		btnSen.setBounds(349, 157, 62, 14);
+		panel.add(btnSen);
+		
+		Fasores fasor1 = new Fasores();
+		
+		btnSen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				btnCos.setEnabled(false);
+				fasor1.setEsCoseno(false);
+			}
+		});
+		
+		btnCos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnSen.setEnabled(false);
+				fasor1.setEsCoseno(true);
+			}
+		});
+		
+		Fasores fasor2 = new Fasores();
+		
+		buttonSen_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buttonCos_1.setEnabled(false);
+				fasor2.setEsCoseno(false);
+			}
+		});
+		
+		buttonCos_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buttonSen_1.setEnabled(false);
+				fasor2.setEsCoseno(true);
+			}
+		});
+		
+		
+		//comboBox = new JComboBox();
+		//comboBox.addItem("sen");
+		//comboBox.addItem("cos");
+		//comboBox.setModel(new DefaultComboBoxModel(new String[] {"sen", "cos"}));
+		//comboBox.setMaximumRowCount(2);
+		
+		//comboBox.setFont(new Font("Arial", Font.PLAIN, 11));
+		//comboBox.setBounds(354, 166, 57, 20);
+		//panel.add(box);
+		
+		//comboBox_1 = new JComboBox();
+		//comboBox_1.addItem("sen");
+		//comboBox_1.addItem("cos");
+		//comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"sen", "cos"}));
+		//comboBox_1.setMaximumRowCount(2);
+		//comboBox_1.setFont(new Font("Arial", Font.PLAIN, 11));
+		//comboBox_1.setBounds(359, 205, 57, 20);
+
+		
+		//panel.add(box_1);
+				
 		JButton btnCalcular = new JButton("Calcular");
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Fasores fasor1= new Fasores();
-				Fasores fasor2= new Fasores();
+				//Fasores fasor1= new Fasores();
+				//Fasores fasor2= new Fasores();
 				SumaDeFasores sumadorFasores= new SumaDeFasores();
 				
-				JComboBox comboBox = new JComboBox();
-				JComboBox comboBox_1 = new JComboBox();
+				//JComboBox comboBox = new JComboBox();
+				//JComboBox comboBox_1 = new JComboBox();
+				JButton btnSen = new JButton("sen");
+				JButton btnCos = new JButton("cos");
+				JButton buttonSen_1 = new JButton("sen");
+				JButton buttonCos_2 = new JButton("cos");
 				
-				float numAmp_1,numFrec_1,numFase_1,numAmp_2,numFrec_2,numFase_2,ansAmp,ansFrec;
-				double ansFase;
+				float numAmp_1,numFrec_1,numFase_1,numAmp_2,numFrec_2,numFase_2;
+				//float ansFase,ansAmp,ansFrec;
+				String ansFase,ansAmp,ansFrec;
 				
 				try {
 					numAmp_1=Float.parseFloat(amplitud_1.getText());
@@ -94,44 +193,66 @@ public class AppSumaFasores {
 					numFrec_2=Float.parseFloat(frecuencia_2.getText());
 					numFase_2=Float.parseFloat(fase_2.getText());
 					
-					Object obj = comboBox.getSelectedItem(); 
-					if(obj=="sen") {
-						fasor1.setEsCoseno(false);
-					}else {
+					//Object obj = comboBox.getSelectedItem(); 
+					//if(obj.equals("sen")) {
+					//	fasor1.setEsCoseno(false);
+					//}else {
+					//	fasor1.setEsCoseno(true);
+					//}
+					
+					if(btnSen.getModel().isPressed()) {
 						fasor1.setEsCoseno(true);
 					}
 					
-					//fasor1.setEsCoseno(true);
+					if(btnCos.getModel().isPressed()) {
+						fasor1.setEsCoseno(true);
+					}
+					
 					fasor1.setAmplitud(numAmp_1);
 					fasor1.setFrecuencia(numFrec_1);
 					fasor1.setFase(numFase_1);
 					
-					//fasor1.convertirEquivalenteEnCoseno();
 					
-					Object obj1 = comboBox_1.getSelectedItem();
-					if(obj1=="sen") {
-						fasor2.setEsCoseno(false);
-					}else {
+					
+					//Object obj1 = comboBox.getSelectedItem(); 
+					//if(obj1.equals("sen")) {
+					//	fasor2.setEsCoseno(false);
+					//}else {
+					//	fasor2.setEsCoseno(true);
+					//}
+					
+					if(buttonSen_1.getModel().isPressed()) {
 						fasor2.setEsCoseno(true);
 					}
 					
-					//fasor2.setEsCoseno(true);
+					if(buttonCos_2.getModel().isPressed()) {
+						fasor2.setEsCoseno(true);
+					}
+					
+					
+					
 					fasor2.setAmplitud(numAmp_2);
 					fasor2.setFrecuencia(numFrec_2);
 					fasor2.setFase(numFase_2);
 					
-					//fasor2.convertirEquivalenteEnCoseno();
+					
 					
 					
 					Fasores fasorResultado= sumadorFasores.realizarOperacion(fasor1, fasor2);
 					
-					ansAmp=fasorResultado.getAmplitud();
-					ansFrec=fasorResultado.getFrecuencia();
-					ansFase=fasorResultado.getFase();
+					DecimalFormat df = new DecimalFormat("#.###");
 					
-					resultadoAmplitud.setText(Float.toString(ansAmp));
-					resultadoFrecuencia.setText(Float.toString(ansFrec));
-					resultadoFase.setText(Double.toString(ansFase));
+					ansAmp=df.format(fasorResultado.getAmplitud());
+					ansFrec=df.format(fasorResultado.getFrecuencia());
+					ansFase=df.format(fasorResultado.getFase());
+					
+					
+					
+					
+					
+					resultadoAmplitud.setText(ansAmp);
+					resultadoFrecuencia.setText(ansFrec);
+					resultadoFase.setText(ansFase);
 					itDepends.setText("cos");
 					
 				}catch(Exception e1) {
@@ -139,19 +260,13 @@ public class AppSumaFasores {
 				}
 			}
 		});
+		
+		
 		btnCalcular.setFont(new Font("Arial", Font.PLAIN, 11));
 		btnCalcular.setBackground(SystemColor.menu);
-		btnCalcular.setBounds(212, 237, 84, 23);
+		btnCalcular.setBounds(212, 240, 84, 23);
 		panel.add(btnCalcular);
 		
-		comboBox_1 = new JComboBox();
-		comboBox_1.addItem("sen");
-		comboBox_1.addItem("cos");
-		//comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"sen", "cos"}));
-		//comboBox_1.setMaximumRowCount(2);
-		comboBox_1.setFont(new Font("Arial", Font.PLAIN, 11));
-		comboBox_1.setBounds(359, 205, 57, 20);
-		panel.add(comboBox_1);
 		
 		JLabel label_13 = new JLabel(")");
 		label_13.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -159,6 +274,7 @@ public class AppSumaFasores {
 		panel.add(label_13);
 		
 		resultadoFase = new JTextField();
+		resultadoFase.setEditable(false);
 		resultadoFase.setHorizontalAlignment(SwingConstants.CENTER);
 		resultadoFase.setFont(new Font("Arial", Font.PLAIN, 11));
 		resultadoFase.setColumns(10);
@@ -172,6 +288,7 @@ public class AppSumaFasores {
 		panel.add(label_12);
 		
 		resultadoFrecuencia = new JTextField();
+		resultadoFrecuencia.setEditable(false);
 		resultadoFrecuencia.setHorizontalAlignment(SwingConstants.CENTER);
 		resultadoFrecuencia.setFont(new Font("Arial", Font.PLAIN, 11));
 		resultadoFrecuencia.setColumns(10);
@@ -185,6 +302,7 @@ public class AppSumaFasores {
 		panel.add(label_11);
 		
 		itDepends = new JTextField();
+		itDepends.setEditable(false);
 		itDepends.setHorizontalAlignment(SwingConstants.CENTER);
 		itDepends.setFont(new Font("Arial", Font.PLAIN, 11));
 		itDepends.setColumns(10);
@@ -193,6 +311,7 @@ public class AppSumaFasores {
 		panel.add(itDepends);
 		
 		resultadoAmplitud = new JTextField();
+		resultadoAmplitud.setEditable(false);
 		resultadoAmplitud.setHorizontalAlignment(SwingConstants.CENTER);
 		resultadoAmplitud.setBackground(SystemColor.menu);
 		resultadoAmplitud.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -287,14 +406,6 @@ public class AppSumaFasores {
 		label_7.setBounds(478, 208, 17, 14);
 		panel.add(label_7);
 		
-		comboBox = new JComboBox();
-		comboBox.addItem("sen");
-		comboBox.addItem("cos");
-		//comboBox.setModel(new DefaultComboBoxModel(new String[] {"sen", "cos"}));
-		//comboBox.setMaximumRowCount(2);
-		comboBox.setFont(new Font("Arial", Font.PLAIN, 11));
-		comboBox.setBounds(354, 166, 57, 20);
-		panel.add(comboBox);
 		
 		frecuencia_2 = new JTextField();
 		frecuencia_2.setHorizontalAlignment(SwingConstants.CENTER);
