@@ -70,9 +70,10 @@ public class Operacion {
 	       float c=divisor.getParteReal();
 	       float d=divisor.getParteImaginaria();
 	       
-	       
-	       float parteRealResultado=(a*d +b*c)/(c*c+d*d);
-	       float parteImaginariaResultado=  (a*c-b*d)/(c*c+d*d);
+	       // (a+bi)/(c+di)
+	       //((a*c)-(b+d))+((a*d)+(b*c))j
+	       float parteRealResultado= (a*c-b*d)/(c*c-d*d);//OK
+	       float parteImaginariaResultado=  (a*d +b*c)/(c*c-d*d);
 	       
 	       resultado.setParteReal(parteRealResultado);
 	       resultado.setParteImaginaria(parteImaginariaResultado);
